@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1a0033">
+    <meta name="description" content="TuneMaster - Platform belajar musik modern untuk gitar dan piano">
+    <title>TuneMaster - Belajar Musik</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="#" id="manifest-placeholder">
+    
+    <style>
+        :root {
+            --primary-purple: #8b5cf6;
+            --dark-bg: #0f0118;
+            --card-bg: #1a0033;
+            --text-light: #e9d5ff;
+            --accent-purple: #a78bfa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #1a0530 100%);
+            color: var(--text-light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            padding-bottom: 80px;
+        }
+        
+        .navbar-custom {
+            background: rgba(26, 0, 51, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--primary-purple);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, var(--primary-purple), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .category-card {
+            background: var(--card-bg);
+            border: 2px solid var(--primary-purple);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+            border-color: var(--accent-purple);
+        }
+        
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: var(--primary-purple);
+        }
+        
+        .video-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .video-card:hover {
+            box-shadow: 0 5px 20px rgba(139, 92, 246, 0.3);
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            padding-top: 56.25%;
+            background: #000;
+        }
+        
+        .video-thumbnail iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .video-info {
+            padding: 15px;
+        }
+        
+        .video-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .video-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .action-btn {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .action-btn:hover {
+            color: var(--primary-purple);
+            transform: scale(1.2);
+        }
+        
+        .action-btn.active {
+            color: var(--primary-purple);
+        }
+        
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 0, 51, 0.98);
+            backdrop-filter: blur(10px);
+            border-top: 2px solid var(--primary-purple);
+            padding: 10px 0;
+            z-index: 1000;
+        }
+        
+        .nav-item {
+            text-align: center;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item:hover,
+        .nav-item.active {
+            color: var(--primary-purple);
+        }
+        
+        .nav-item i {
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .nav-item span {
+            font-size: 0.75rem;
+        }
+        
+        .practice-mode {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid var(--primary-purple);
+        }
+        
+        .metronome {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .bpm-display {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-purple);
+            margin: 20px 0;
+        }
+        
+        .bpm-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .bpm-btn {
+            background: var(--primary-purple);
+            border: none;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .bpm-btn:hover {
+            background: var(--accent-purple);
+            transform: scale(1.1);
+        }
+        
+        .play-metronome {
+            background: var(--primary-purple);
+            border: none;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .play-metronome:hover {
+            background: var(--accent-purple);
+            transform: scale(1.05);
+        }
+        
+        .play-metronome.active {
+            background: #ef4444;
+        }
+        
+        .chord-guide {
+            background: rgba(139, 92, 246, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .chord-item {
+            display: inline-block;
+            background: var(--primary-purple);
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            font-weight: 600;
+        }
+        
+        .progress-tracker {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid var(--primary-purple);
+        }
+        
+        .progress-bar-custom {
+            background: rgba(139, 92, 246, 0.2);
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, var(--primary-purple), var(--accent-purple));
+            height: 100%;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .badge-custom {
+            background: var(--primary-purple);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin: 5px;
+        }
+        
+        .search-box {
+            background: var(--card-bg);
+            border: 2px solid var(--primary-purple);
+            border-radius: 30px;
+            padding: 12px 20px;
+            color: var(--text-light);
+            width: 100%;
+            margin: 20px 0;
+        }
+        
+        .search-box:focus {
+            outline: none;
+            border-color: var(--accent-purple);
+        }
+        
+        .notification-item {
+            background: var(--card-bg);
+            border-left: 4px solid var(--primary-purple);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+        
+        .notification-time {
+            font-size: 0.85rem;
+            color: #a78bfa;
+            margin-top: 5px;
+        }
+        
+        .history-item {
+            display: flex;
+            gap: 15px;
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+        
+        .history-thumbnail {
+            width: 120px;
+            height: 68px;
+            border-radius: 8px;
+            background: #000;
+            flex-shrink: 0;
+        }
+        
+        .btn-custom {
+            background: var(--primary-purple);
+            border: none;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-custom:hover {
+            background: var(--accent-purple);
+            transform: translateY(-2px);
+            color: white;
+        }
+        
+        .motivation-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            border: 3px solid var(--primary-purple);
+            text-align: center;
+            z-index: 2000;
+            transition: transform 0.3s ease;
+        }
+        
+        .motivation-popup.show {
+            transform: translate(-50%, -50%) scale(1);
+        }
+        
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1999;
+            display: none;
+        }
+        
+        .popup-overlay.show {
+            display: block;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar-custom">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center w-100 py-2">
+                <div class="logo">
+                    <i class="bi bi-music-note-beamed"></i> TuneMaster
+                </div>
+                <div>
+                    <i class="bi bi-bell" style="font-size: 1.3rem; cursor: pointer;"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4" id="main-content">
+        
+        <!-- Beranda -->
+        <div id="home-page">
+            <h2 class="mb-4">🎵 Mulai Belajar Musik</h2>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="category-card" onclick="showCategory('guitar')">
+                        <div class="text-center">
+                            <div class="category-icon">🎸</div>
+                            <h4>Gitar</h4>
+                            <p class="mb-0">Pelajari chord dan teknik dasar gitar</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="category-card" onclick="showCategory('piano')">
+                        <div class="text-center">
+                            <div class="category-icon">🎹</div>
+                            <h4>Piano</h4>
+                            <p class="mb-0">Kuasai chord dan teknik piano</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Tracker -->
+            <div class="progress-tracker mt-4">
+                <h5><i class="bi bi-graph-up"></i> Progress Anda</h5>
+                <div class="progress-bar-custom">
+                    <div class="progress-fill" id="progress-fill" style="width: 35%">35%</div>
+                </div>
+                <p class="mb-2">Video diselesaikan: <strong id="videos-completed">7</strong> dari 20</p>
+                <div>
+                    <span class="badge-custom">🔥 Streak 5 hari</span>
+                    <span class="badge-custom">⭐ Pemula</span>
+                    <span class="badge-custom">🎯 Target Harian</span>
+                </div>
+            </div>
+
+            <!-- Program Latihan -->
+            <div class="mt-4">
+                <h5 class="mb-3">📅 Program Latihan</h5>
+                <div class="video-card">
+                    <div class="video-info">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-1">7 Hari Belajar Chord Dasar</h6>
+                                <small class="text-muted">Hari ke-3 dari 7</small>
+                            </div>
+                            <button class="btn-custom btn-sm">Lanjutkan</button>
+                        </div>
+                        <div class="progress-bar-custom mt-2" style="height: 8px;">
+                            <div class="progress-fill" style="width: 43%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kategori Gitar -->
+        <div id="guitar-page" class="hidden">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2><i class="bi bi-arrow-left" onclick="showHome()" style="cursor: pointer;"></i> 🎸 Gitar</h2>
+            </div>
+
+            <div class="video-card">
+                <div class="video-thumbnail">
+                     <iframe src="https://www.youtube.com/embed/ALkZgF9mYOk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">Chord Dasar Gitar - Panduan Lengkap Pemula</div>
+                    <small class="text-muted">Belajar C, G, Am, Em dengan mudah</small>
+                    <div class="video-actions">
+                        <button class="action-btn" onclick="toggleFavorite(this)">
+                            <i class="bi bi-heart"></i>
+                        </button>
+                        <button class="action-btn" onclick="addToPlaylist(this)">
+                            <i class="bi bi-plus-circle"></i>
+                        </button>
+                        <button class="action-btn" onclick="togglePracticeMode('guitar1')">
+                            <i class="bi bi-toggles"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="practice-guitar1" class="practice-mode hidden">
+                <h5><i class="bi bi-music-note"></i> Practice Mode</h5>
+                
+                <div class="chord-guide">
+                    <strong>Chord Guide:</strong><br>
+                    <span class="chord-item">C</span>
+                    <span class="chord-item">G</span>
+                    <span class="chord-item">Am</span>
+                    <span class="chord-item">Em</span>
+                </div>
+
+                <div class="metronome">
+                    <h6>Metronome</h6>
+                    <div class="bpm-display" id="bpm-display">80 BPM</div>
+                    <div class="bpm-controls">
+                        <button class="bpm-btn" onclick="changeBPM(-5)">-</button>
+                        <button class="play-metronome" id="play-metronome" onclick="toggleMetronome()">
+                            <i class="bi bi-play-fill"></i> Play
+                        </button>
+                        <button class="bpm-btn" onclick="changeBPM(5)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <iframe src="https://www.youtube.com/embed/nxIB6Ee54f4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">5 Teknik Dasar Bermain Gitar</div>
+                    <small class="text-muted">Strumming, picking, dan teknik tangan</small>
+                    <div class="video-actions">
+                        <button class="action-btn" onclick="toggleFavorite(this)">
+                            <i class="bi bi-heart"></i>
+                        </button>
+                        <button class="action-btn" onclick="addToPlaylist(this)">
+                            <i class="bi bi-plus-circle"></i>
+                        </button>
+                        <button class="action-btn" onclick="togglePracticeMode('guitar2')">
+                            <i class="bi bi-toggles"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="practice-guitar2" class="practice-mode hidden">
+                <h5><i class="bi bi-music-note"></i> Practice Mode</h5>
+                
+                <div class="chord-guide">
+                    <strong>Teknik:</strong><br>
+                    <span class="chord-item">Downstroke</span>
+                    <span class="chord-item">Upstroke</span>
+                    <span class="chord-item">Alternate Picking</span>
+                </div>
+
+                <div class="metronome">
+                    <h6>Metronome</h6>
+                    <div class="bpm-display">60 BPM</div>
+                    <button class="play-metronome">
+                        <i class="bi bi-play-fill"></i> Play
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kategori Piano -->
+        <div id="piano-page" class="hidden">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2><i class="bi bi-arrow-left" onclick="showHome()" style="cursor: pointer;"></i> 🎹 Piano</h2>
+            </div>
+
+            <div class="video-card">
+                <div class="video-thumbnail">
+                     <iframe src="https://www.youtube.com/embed/6djta977xts" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">Belajar Chord Dasar Piano</div>
+                    <small class="text-muted">Pengenalan chord dan melodi sederhana</small>
+                    <div class="video-actions">
+                        <button class="action-btn" onclick="toggleFavorite(this)">
+                            <i class="bi bi-heart"></i>
+                        </button>
+                        <button class="action-btn" onclick="addToPlaylist(this)">
+                            <i class="bi bi-plus-circle"></i>
+                        </button>
+                        <button class="action-btn" onclick="togglePracticeMode('piano1')">
+                            <i class="bi bi-toggles"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="practice-piano1" class="practice-mode hidden">
+                <h5><i class="bi bi-music-note"></i> Practice Mode</h5>
+                
+                <div class="chord-guide">
+                    <strong>Piano Chords:</strong><br>
+                    <span class="chord-item">C Major</span>
+                    <span class="chord-item">G Major</span>
+                    <span class="chord-item">A Minor</span>
+                    <span class="chord-item">F Major</span>
+                </div>
+
+                <div class="metronome">
+                    <h6>Metronome</h6>
+                    <div class="bpm-display">70 BPM</div>
+                    <button class="play-metronome">
+                        <i class="bi bi-play-fill"></i> Play
+                    </button>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-thumbnail">
+                     <iframe src="https://www.youtube.com/embed/USaeO7-Z5k0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <div class="video-title">Teknik Tangan Kanan-Kiri Piano</div>
+                    <small class="text-muted">Koordinasi dan iringan lagu</small>
+                    <div class="video-actions">
+                        <button class="action-btn" onclick="toggleFavorite(this)">
+                            <i class="bi bi-heart"></i>
+                        </button>
+                        <button class="action-btn" onclick="addToPlaylist(this)">
+                            <i class="bi bi-plus-circle"></i>
+                        </button>
+                        <button class="action-btn" onclick="togglePracticeMode('piano2')">
+                            <i class="bi bi-toggles"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="practice-piano2" class="practice-mode hidden">
+                <h5><i class="bi bi-music-note"></i> Practice Mode</h5>
+                
+                <div class="chord-guide">
+                    <strong>Koordinasi:</strong><br>
+                    <span class="chord-item">Left Hand Bass</span>
+                    <span class="chord-item">Right Hand Melody</span>
+                    <span class="chord-item">Both Hands</span>
+                </div>
+
+                <div class="metronome">
+                    <h6>Metronome</h6>
+                    <div class="bpm-display">65 BPM</div>
+                    <button class="play-metronome">
+                        <i class="bi bi-play-fill"></i> Play
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Riwayat -->
+        <div id="history-page" class="hidden">
+            <h2 class="mb-4"><i class="bi bi-clock-history"></i> Riwayat</h2>
+            
+            <div class="history-item">
+                <div class="history-thumbnail" style="background: linear-gradient(45deg, #8b5cf6, #a78bfa);"></div>
+                <div class="flex-grow-1">
+                    <h6 class="mb-1">Chord Dasar Gitar</h6>
+                    <small class="text-muted">Ditonton 2 jam yang lalu</small>
+                </div>
+            </div>
+
+            <div class="history-item">
+                <div class="history-thumbnail" style="background: linear-gradient(45deg, #a78bfa, #c4b5fd);"></div>
+                <div class="flex-grow-1">
+                    <h6 class="mb-1">Teknik Piano Dasar</h6>
+                    <small class="text-muted">Ditonton kemarin</small>
+                </div>
+            </div>
+
+            <div class="history-item">
+                <div class="history-thumbnail" style="background: linear-gradient(45deg, #8b5cf6, #c4b5fd);"></div>
+                <div class="flex-grow-1">
+                    <h6 class="mb-1">5 Teknik Bermain Gitar</h6>
+                    <small class="text-muted">Ditonton 3 hari yang lalu</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notifikasi -->
+        <div id="notification-page" class="hidden">
+            <h2 class="mb-4"><i class="bi bi-bell"></i> Notifikasi</h2>
+            
+            <div class="notification-item">
+                <h6 class="mb-2">🎯 Waktunya Latihan!</h6>
+                <p class="mb-1">Jangan lupa latihan chord hari ini. Konsistensi adalah kunci!</p>
+                <div class="notification-time">5 menit yang lalu</div>
+            </div>
+
+            <div class="notification-item">
+                <h6 class="mb-2">⭐ Video Baru Tersedia</h6>
+                <p class="mb-1">Tutorial baru "Teknik Fingerpicking Gitar" telah ditambahkan</p>
+                <div class="notification-time">1 jam yang lalu</div>
+            </div>
+
+            <div class="notification-item">
+                <h6 class="mb-2">🔥 Streak 5 Hari!</h6>
+                <p class="mb-1">Selamat! Kamu telah berlatih selama 5 hari berturut-turut</p>
+                <div class="notification-time">Kemarin</div>
+            </div>
+
+            <div class="notification-item">
+                <h6 class="mb-2">🎵 Rekomendasi untuk Kamu</h6>
+                <p class="mb-1">Berdasarkan progres kamu, coba video "Chord Lanjutan Piano"</p>
+                <div class="notification-time">2 hari yang lalu</div>
+            </div>
+        </div>
+
+        <!-- Pencarian -->
+        <div id="search-page" class="hidden">
+            <h2 class="mb-3"><i class="bi bi-search"></i> Pencarian</h2>
+            <input type="text" class="search-box" placeholder="Cari tutorial musik..." id="search-input">
+            
+            <div id="search-results" class="mt-4">
+                <p class="text-muted text-center">Masukkan kata kunci untuk mencari tutorial</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <div class="container">
+            <div class="row">
+                <div class="col nav-item active" onclick="showPage('home')">
+                    <i class="bi bi-house-door-fill"></i>
+                    <span>Beranda</span>
+                </div>
+                <div class="col nav-item" onclick="showPage('history')">
+                    <i class="bi bi-clock-history"></i>
+                    <span>Riwayat</span>
+                </div>
+                <div class="col nav-item" onclick="showPage('notification')">
+                    <i class="bi bi-bell"></i>
+                    <span>Notifikasi</span>
+                </div>
+                <div class="col nav-item" onclick="showPage('search')">
+                    <i class="bi bi-search"></i>
+                    <span>Cari</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Motivation Popup -->
+    <div class="popup-overlay" id="popup-overlay" onclick="hideMotivation()"></div>
+    <div class="motivation-popup" id="motivation-popup">
+        <div class="pulse">
+            <h2 style="font-size: 3rem; margin-bottom: 20px;">🎉</h2>
+            <h4>Good Job!</h4>
+            <p class="mt-3">Keep practicing and you'll master it soon!</p>
+            <button class="btn-custom mt-3" onclick="hideMotivation()">Lanjutkan</button>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Variables
+        let currentBPM = 80;
+        let metronomeInterval = null;
+        let isMetronomePlaying = false;
+        
+        // Audio Context for Metronome
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        let audioContext;
+        
+        // Navigation Functions
+        function showPage(page) {
+            // Hide all pages
+            document.getElementById('home-page').classList.add('hidden');
+            document.getElementById('guitar-page').classList.add('hidden');
+            document.getElementById('piano-page').classList.add('hidden');
+            document.getElementById('history-page').classList.add('hidden');
+            document.getElementById('notification-page').classList.add('hidden');
+            document.getElementById('search-page').classList.add('hidden');
+            
+            // Show selected page
+            document.getElementById(page + '-page').classList.remove('hidden');
+            
+            // Update active nav
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.target.closest('.nav-item').classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        function showCategory(category) {
+            document.getElementById('home-page').classList.add('hidden');
+            document.getElementById(category + '-page').classList.remove('hidden');
+        }
+        
+        function showHome() {
+            document.getElementById('guitar-page').classList.add('hidden');
+            document.getElementById('piano-page').classList.add('hidden');
+            document.getElementById('home-page').classList.remove('hidden');
+        }
+        
+        // Video Actions
+        function toggleFavorite(btn) {
+            const icon = btn.querySelector('i');
+            if (icon.classList.contains('bi-heart')) {
+                icon.classList.remove('bi-heart');
+                icon.classList.add('bi-heart-fill');
+                btn.classList.add('active');
+                showMotivation('❤️', 'Ditambahkan ke Favorit!', 'Video ini sudah tersimpan di daftar favorit kamu');
+            } else {
+                icon.classList.remove('bi-heart-fill');
+                icon.classList.add('bi-heart');
+                btn.classList.remove('active');
+            }
+        }
+        
+        function addToPlaylist(btn) {
+            btn.classList.add('active');
+            showMotivation('➕', 'Ditambahkan ke Playlist!', 'Video berhasil ditambahkan ke playlist pribadi kamu');
+            setTimeout(() => {
+                btn.classList.remove('active');
+            }, 1000);
+        }
+        
+        function togglePracticeMode(id) {
+            const practiceMode = document.getElementById('practice-' + id);
+            if (practiceMode.classList.contains('hidden')) {
+                practiceMode.classList.remove('hidden');
+                // Stop other metronomes
+                if (isMetronomePlaying) {
+                    toggleMetronome();
+                }
+            } else {
+                practiceMode.classList.add('hidden');
+            }
+        }
+        
+        // Metronome Functions
+        function changeBPM(change) {
+            currentBPM += change;
+            if (currentBPM < 40) currentBPM = 40;
+            if (currentBPM > 200) currentBPM = 200;
+            document.getElementById('bpm-display').textContent = currentBPM + ' BPM';
+            
+            if (isMetronomePlaying) {
+                stopMetronome();
+                startMetronome();
+            }
+        }
+        
+        function toggleMetronome() {
+            const btn = document.getElementById('play-metronome');
+            if (isMetronomePlaying) {
+                stopMetronome();
+                btn.innerHTML = '<i class="bi bi-play-fill"></i> Play';
+                btn.classList.remove('active');
+            } else {
+                startMetronome();
+                btn.innerHTML = '<i class="bi bi-stop-fill"></i> Stop';
+                btn.classList.add('active');
+            }
+        }
+        
+        function startMetronome() {
+            if (!audioContext) {
+                audioContext = new AudioContext();
+            }
+            
+            isMetronomePlaying = true;
+            const interval = 60000 / currentBPM;
+            
+            function playClick() {
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = 800;
+                gainNode.gain.value = 0.3;
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.1);
+            }
+            
+            playClick();
+            metronomeInterval = setInterval(playClick, interval);
+        }
+        
+        function stopMetronome() {
+            isMetronomePlaying = false;
+            if (metronomeInterval) {
+                clearInterval(metronomeInterval);
+                metronomeInterval = null;
+            }
+        }
+        
+        // Motivation Popup
+        function showMotivation(emoji, title, message) {
+            const popup = document.getElementById('motivation-popup');
+            const overlay = document.getElementById('popup-overlay');
+            
+            popup.innerHTML = `
+                <div class="pulse">
+                    <h2 style="font-size: 3rem; margin-bottom: 20px;">${emoji}</h2>
+                    <h4>${title}</h4>
+                    <p class="mt-3">${message}</p>
+                    <button class="btn-custom mt-3" onclick="hideMotivation()">Lanjutkan</button>
+                </div>
+            `;
+            
+            overlay.classList.add('show');
+            popup.classList.add('show');
+        }
+        
+        function hideMotivation() {
+            document.getElementById('motivation-popup').classList.remove('show');
+            document.getElementById('popup-overlay').classList.remove('show');
+        }
+        
+        // Search Function
+        document.getElementById('search-input')?.addEventListener('input', function(e) {
+            const query = e.target.value.toLowerCase();
+            const resultsDiv = document.getElementById('search-results');
+            
+            if (query.length > 0) {
+                resultsDiv.innerHTML = `
+                    <div class="video-card">
+                        <div class="video-info">
+                            <h6>Hasil pencarian untuk "${query}"</h6>
+                            <p class="text-muted">Chord Dasar Gitar - Tutorial Lengkap</p>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-info">
+                            <h6>Tutorial Piano ${query}</h6>
+                            <p class="text-muted">Belajar Piano untuk Pemula</p>
+                        </div>
+                    </div>
+                `;
+            } else {
+                resultsDiv.innerHTML = '<p class="text-muted text-center">Masukkan kata kunci untuk mencari tutorial</p>';
+            }
+        });
+        
+        // PWA Installation
+        let deferredPrompt;
+        
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            // Show install button/banner (optional)
+            console.log('PWA can be installed');
+        });
+        
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('Service Worker registered:', registration);
+                    })
+                    .catch(error => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+        
+        // Create and inject manifest.json
+        const manifest = {
+            name: 'TuneMaster - Belajar Musik',
+            short_name: 'TuneMaster',
+            description: 'Platform belajar musik modern untuk gitar dan piano',
+            start_url: '/',
+            display: 'standalone',
+            background_color: '#0f0118',
+            theme_color: '#1a0033',
+            orientation: 'portrait',
+            icons: [
+                {
+                    src: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="%238b5cf6" width="100" height="100" rx="20"/><text x="50" y="70" font-size="60" text-anchor="middle" fill="white">🎵</text></svg>',
+                    sizes: '192x192',
+                    type: 'image/svg+xml'
+                },
+                {
+                    src: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="%238b5cf6" width="100" height="100" rx="20"/><text x="50" y="70" font-size="60" text-anchor="middle" fill="white">🎵</text></svg>',
+                    sizes: '512x512',
+                    type: 'image/svg+xml'
+                }
+            ]
+        };
+        
+        const manifestBlob = new Blob([JSON.stringify(manifest)], { type: 'application/json' });
+        const manifestURL = URL.createObjectURL(manifestBlob);
+        document.getElementById('manifest-placeholder').setAttribute('href', manifestURL);
+        
+        // Service Worker Code (inline)
+        const swCode = `
+            const CACHE_NAME = 'tunemaster-v1';
+            const urlsToCache = [
+                '/',
+                '/index.html',
+                'https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css',
+                'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css',
+                'https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js'
+            ];
+
+            self.addEventListener('install', event => {
+                event.waitUntil(
+                    caches.open(CACHE_NAME)
+                        .then(cache => cache.addAll(urlsToCache))
+                );
+            });
+
+            self.addEventListener('fetch', event => {
+                event.respondWith(
+                    caches.match(event.request)
+                        .then(response => response || fetch(event.request))
+                );
+            });
+
+            self.addEventListener('activate', event => {
+                event.waitUntil(
+                    caches.keys().then(cacheNames => {
+                        return Promise.all(
+                            cacheNames.map(cacheName => {
+                                if (cacheName !== CACHE_NAME) {
+                                    return caches.delete(cacheName);
+                                }
+                            })
+                        );
+                    })
+                );
+            });
+        `;
+        
+        // Create service worker blob
+        const swBlob = new Blob([swCode], { type: 'application/javascript' });
+        const swURL = URL.createObjectURL(swBlob);
+        
+        // Register service worker with blob URL
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register(swURL)
+                    .then(registration => {
+                        console.log('✅ Service Worker registered successfully');
+                    })
+                    .catch(error => {
+                        console.log('❌ Service Worker registration failed:', error);
+                    });
+            });
+        }
+        
+        // Update progress on video completion (simulation)
+        function updateProgress() {
+            const videosCompleted = parseInt(document.getElementById('videos-completed').textContent);
+            const newCompleted = Math.min(videosCompleted + 1, 20);
+            const percentage = Math.round((newCompleted / 20) * 100);
+            
+            document.getElementById('videos-completed').textContent = newCompleted;
+            document.getElementById('progress-fill').style.width = percentage + '%';
+            document.getElementById('progress-fill').textContent = percentage + '%';
+            
+            if (newCompleted % 5 === 0) {
+                showMotivation('🎉', 'Milestone Achieved!', `Kamu sudah menyelesaikan ${newCompleted} video!`);
+            }
+        }
+        
+        // Simulate video completion
+        document.querySelectorAll('.video-card').forEach(card => {
+            card.addEventListener('dblclick', () => {
+                updateProgress();
+            });
+        });
+        
+        // Touch gestures for swipe (optional enhancement)
+        let touchStartY = 0;
+        let touchEndY = 0;
+        
+        document.addEventListener('touchstart', e => {
+            touchStartY = e.changedTouches[0].screenY;
+        });
+        
+        document.addEventListener('touchend', e => {
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            if (touchStartY - touchEndY > swipeThreshold) {
+                // Swipe up - could navigate to next video
+                console.log('Swipe up detected');
+            }
+            if (touchEndY - touchStartY > swipeThreshold) {
+                // Swipe down - could navigate to previous video
+                console.log('Swipe down detected');
+            }
+        }
+        
+        // Show welcome message on first load
+        setTimeout(() => {
+            if (!localStorage.getItem('tunemaster_welcomed')) {
+                showMotivation('🎵', 'Selamat Datang di TuneMaster!', 'Mulai perjalanan musik kamu sekarang');
+                localStorage.setItem('tunemaster_welcomed', 'true');
+            }
+        }, 1000);
+        
+        // Daily reminder notification simulation
+        function checkDailyReminder() {
+            const lastPractice = localStorage.getItem('last_practice_date');
+            const today = new Date().toDateString();
+            
+            if (lastPractice !== today) {
+                // Show reminder after 1 minute of inactivity
+                setTimeout(() => {
+                    showMotivation('⏰', 'Waktunya Latihan!', 'Jangan lupa latihan hari ini untuk mempertahankan streak kamu');
+                }, 60000);
+            }
+        }
+        
+        checkDailyReminder();
+        
+        // Save practice session
+        function savePracticeSession() {
+            localStorage.setItem('last_practice_date', new Date().toDateString());
+        }
+        
+        // Auto-save when metronome is used
+        document.getElementById('play-metronome')?.addEventListener('click', savePracticeSession);
+    </script>
+</body>
+</html>
