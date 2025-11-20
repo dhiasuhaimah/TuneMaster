@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+    <link rel="icon" type="image/x-icon" href="/ikon/tanpa ltar blkng.png" /> 
+</head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#1a0033">
@@ -474,185 +476,227 @@
             </div>
         </div>
 
-        <!-- Kategori Gitar -->
-        <div id="guitar-page" class="hidden">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2><i class="bi bi-arrow-left" onclick="showHome()" style="cursor: pointer;"></i> 🎸 Gitar</h2>
-            </div>
+       <!-- Kategori Gitar -->
+<div id="guitar-page" class="hidden" style="padding: 16px; max-width: 600px; margin: auto; background:#6A3FBF; color:white;">
 
-            <div class="video-card">
-                <div class="video-thumbnail">
-                     <iframe src="https://www.youtube.com/embed/ALkZgF9mYOk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="video-info">
-                    <div class="video-title">Chord Dasar Gitar - Panduan Lengkap Pemula</div>
-                    <small class="text-muted">Belajar C, G, Am, Em dengan mudah</small>
-                    <div class="video-actions">
-                        <button class="action-btn" onclick="toggleFavorite(this)">
-                            <i class="bi bi-heart"></i>
-                        </button>
-                        <button class="action-btn" onclick="addToPlaylist(this)">
-                            <i class="bi bi-plus-circle"></i>
-                        </button>
-                        <button class="action-btn" onclick="togglePracticeMode('guitar1')">
-                            <i class="bi bi-toggles"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4" style="display:flex; align-items:center; gap:10px; color:white;">
+        <i class="bi bi-arrow-left" onclick="showHome()" style="cursor: pointer; font-size: 20px; color:white;"></i>
+        <h2 style="margin:0; font-size: 22px; color:white;">🎸 Gitar</h2>
+    </div>
 
-            <div id="practice-guitar1" class="practice-mode hidden">
-                <h5><i class="bi bi-music-note"></i> Practice Mode</h5>
-                
-                <div class="chord-guide">
-                    <strong>Chord Guide:</strong><br>
-                    <span class="chord-item">C</span>
-                    <span class="chord-item">G</span>
-                    <span class="chord-item">Am</span>
-                    <span class="chord-item">Em</span>
-                </div>
+    <!-- NEW SECTION: Tutorial List Thumbnail -->
+    <div class="tutorial-section" style="margin-bottom: 20px;">
+        <h3 style="font-size:18px; margin-bottom:10px; color:white;">📚 Gambar Chord </h3>
 
-                <div class="metronome">
-                    <h6>Metronome</h6>
-                    <div class="bpm-display" id="bpm-display">80 BPM</div>
-                    <div class="bpm-controls">
-                        <button class="bpm-btn" onclick="changeBPM(-5)">-</button>
-                        <button class="play-metronome" id="play-metronome" onclick="toggleMetronome()">
-                            <i class="bi bi-play-fill"></i> Play
-                        </button>
-                        <button class="bpm-btn" onclick="changeBPM(5)">+</button>
-                    </div>
-                </div>
-            </div>
+        <div class="tutorial-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap:14px;">
 
-            <div class="video-card">
-                <div class="video-thumbnail">
-                    <iframe src="https://www.youtube.com/embed/nxIB6Ee54f4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="video-info">
-                    <div class="video-title">5 Teknik Dasar Bermain Gitar</div>
-                    <small class="text-muted">Strumming, picking, dan teknik tangan</small>
-                    <div class="video-actions">
-                        <button class="action-btn" onclick="toggleFavorite(this)">
-                            <i class="bi bi-heart"></i>
-                        </button>
-                        <button class="action-btn" onclick="addToPlaylist(this)">
-                            <i class="bi bi-plus-circle"></i>
-                        </button>
-                        <button class="action-btn" onclick="togglePracticeMode('guitar2')">
-                            <i class="bi bi-toggles"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <div class="tutorial-card" onclick="openTutorialList()" 
+     style="background:#8A63D2; border-radius:14px; padding:12px; text-align:center; cursor:pointer; color:white;">
 
-            <div id="practice-guitar2" class="practice-mode hidden">
-                <h5><i class="bi bi-music-note"></i> Practice Mode</h5>
-                
-                <div class="chord-guide">
-                    <strong>Teknik:</strong><br>
-                    <span class="chord-item">Downstroke</span>
-                    <span class="chord-item">Upstroke</span>
-                    <span class="chord-item">Alternate Picking</span>
-                </div>
+    <img src="./ikon/chord-g.png" 
+    style="width:100%; border-radius:10px; margin-bottom:8px;" />
+            <strong>Chord Dasar</strong>
+</div>
 
-                <div class="metronome">
-                    <h6>Metronome</h6>
-                    <div class="bpm-display">60 BPM</div>
-                    <button class="play-metronome">
-                        <i class="bi bi-play-fill"></i> Play
-                    </button>
-                </div>
+            <div class="tutorial-card" onclick="openTutorialList()" style="background:#8A63D2; border-radius:14px; padding:12px; text-align:center; cursor:pointer; color:white;">
+                <img src="./ikon/image.png"  style="width:100%; border-radius:10px; margin-bottom:8px;" />
+                <strong>Melodic Chords</strong>
             </div>
         </div>
+    </div>
 
+    <!-- TITLE BEFORE YOUTUBE CONTENT -->
+    <h3 style="font-size:18px; margin: 20px 0 10px; color:white;">🎥 Video Tutorial YouTube</h3>
+
+    <!-- VIDEO 1 -->
+    <div class="video-card" style="background:#ffffff; padding:12px; border-radius:14px; margin-bottom:18px; box-shadow:0 2px 5px rgba(0,0,0,0.07); color:black;">
+        <div class="video-thumbnail" style="margin-bottom:10px;">
+            <iframe src="https://www.youtube.com/embed/ALkZgF9mYOk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; border-radius:10px;"></iframe>
+        </div>
+        <div class="video-info">
+            <div class="video-title" style="font-size:16px; font-weight:600;">Chord Dasar Gitar - Panduan Lengkap Pemula</div>
+            <small class="text-muted">Belajar C, G, Am, Em dengan mudah</small>
+
+            <div class="video-actions" style="margin-top:8px; display:flex; gap:10px;">
+                <button class="action-btn" onclick="toggleFavorite(this)"><i class="bi bi-heart"></i></button>
+                <button class="action-btn" onclick="addToPlaylist(this)"><i class="bi bi-plus-circle"></i></button>
+                <button class="action-btn" onclick="togglePracticeMode('guitar1')"><i class="bi bi-toggles"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRACTICE MODE 1 -->
+    <div id="practice-guitar1" class="practice-mode hidden" style="background:#e9ddff; padding:12px; border-radius:14px; margin-bottom:18px; color:black;">
+        <h5><i class="bi bi-music-note"></i> Practice Mode</h5>
+        <div class="chord-guide" style="margin-bottom:10px;">
+            <strong>Chord Guide:</strong><br>
+            <span class="chord-item">C</span>
+            <span class="chord-item">G</span>
+            <span class="chord-item">Am</span>
+            <span class="chord-item">Em</span>
+        </div>
+        <div class="metronome">
+            <h6>Metronome</h6>
+            <div class="bpm-display" id="bpm-display">80 BPM</div>
+            <div class="bpm-controls" style="display:flex; gap:10px; margin-top:6px;">
+                <button class="bpm-btn" onclick="changeBPM(-5)">-</button>
+                <button class="play-metronome" id="play-metronome" onclick="toggleMetronome()"><i class="bi bi-play-fill"></i> Play</button>
+                <button class="bpm-btn" onclick="changeBPM(5)">+</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIDEO 2 -->
+    <div class="video-card" style="background:white; padding:12px; border-radius:14px; margin-bottom:18px; box-shadow:0 2px 5px rgba(0,0,0,0.07); color:black;">
+        <div class="video-thumbnail" style="margin-bottom:10px;">
+            <iframe src="https://www.youtube.com/embed/nxIB6Ee54f4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; border-radius:10px;"></iframe>
+        </div>
+        <div class="video-info">
+            <div class="video-title" style="font-size:16px; font-weight:600;">5 Teknik Dasar Bermain Gitar</div>
+            <small class="text-muted">Strumming, picking, dan teknik tangan</small>
+
+            <div class="video-actions" style="margin-top:8px; display:flex; gap:10px;">
+                <button class="action-btn" onclick="toggleFavorite(this)"><i class="bi bi-heart"></i></button>
+                <button class="action-btn" onclick="addToPlaylist(this)"><i class="bi bi-plus-circle"></i></button>
+                <button class="action-btn" onclick="togglePracticeMode('guitar2')"><i class="bi bi-toggles"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRACTICE MODE 2 -->
+    <div id="practice-guitar2" class="practice-mode hidden" style="background:#e9ddff; padding:12px; border-radius:14px; margin-bottom:18px; color:black;">
+        <h5><i class="bi bi-music-note"></i> Practice Mode</h5>
+        <div class="chord-guide" style="margin-bottom:10px;">
+            <strong>Teknik:</strong><br>
+            <span class="chord-item">Downstroke</span>
+            <span class="chord-item">Upstroke</span>
+            <span class="chord-item">Alternate Picking</span>
+        </div>
+        <div class="metronome">
+            <h6>Metronome</h6>
+            <div class="bpm-display">60 BPM</div>
+            <button class="play-metronome"><i class="bi bi-play-fill"></i> Play</button>
+        </div>
+    </div>
+</div>
+
+<script>
+function openTutorialList() {
+    alert('Ini menuju halaman list tutorial gambar.');
+}
+</script>
         <!-- Kategori Piano -->
-        <div id="piano-page" class="hidden">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2><i class="bi bi-arrow-left" onclick="showHome()" style="cursor: pointer;"></i> 🎹 Piano</h2>
+<div id="piano-page" class="hidden" style="padding: 16px; max-width: 600px; margin: auto; background:#6A3FBF; color:white;">
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4" style="display:flex; align-items:center; gap:10px; color:white;">
+        <i class="bi bi-arrow-left" onclick="showHome()" style="cursor: pointer; font-size: 20px; color:white;"></i>
+        <h2 style="margin:0; font-size: 22px; color:white;">🎹 Piano</h2>
+    </div>
+
+    <!-- NEW SECTION: Tutorial List Thumbnail -->
+    <div class="tutorial-section" style="margin-bottom: 20px;">
+        <h3 style="font-size:18px; margin-bottom:10px; color:white;">📚 Gambar Chord</h3>
+
+        <div class="tutorial-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap:14px;">
+
+            <div class="tutorial-card" onclick="openTutorialList()" 
+                style="background:#8A63D2; border-radius:14px; padding:12px; text-align:center; cursor:pointer; color:white;">
+                <img src="./ikon/image copy.png" 
+                style="width:100%; border-radius:10px; margin-bottom:8px;" />
+                <strong>Piano Chords</strong>
             </div>
 
-            <div class="video-card">
-                <div class="video-thumbnail">
-                     <iframe src="https://www.youtube.com/embed/6djta977xts" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="video-info">
-                    <div class="video-title">Belajar Chord Dasar Piano</div>
-                    <small class="text-muted">Pengenalan chord dan melodi sederhana</small>
-                    <div class="video-actions">
-                        <button class="action-btn" onclick="toggleFavorite(this)">
-                            <i class="bi bi-heart"></i>
-                        </button>
-                        <button class="action-btn" onclick="addToPlaylist(this)">
-                            <i class="bi bi-plus-circle"></i>
-                        </button>
-                        <button class="action-btn" onclick="togglePracticeMode('piano1')">
-                            <i class="bi bi-toggles"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div id="practice-piano1" class="practice-mode hidden">
-                <h5><i class="bi bi-music-note"></i> Practice Mode</h5>
-                
-                <div class="chord-guide">
-                    <strong>Piano Chords:</strong><br>
-                    <span class="chord-item">C Major</span>
-                    <span class="chord-item">G Major</span>
-                    <span class="chord-item">A Minor</span>
-                    <span class="chord-item">F Major</span>
-                </div>
-
-                <div class="metronome">
-                    <h6>Metronome</h6>
-                    <div class="bpm-display">70 BPM</div>
-                    <button class="play-metronome">
-                        <i class="bi bi-play-fill"></i> Play
-                    </button>
-                </div>
-            </div>
-
-            <div class="video-card">
-                <div class="video-thumbnail">
-                     <iframe src="https://www.youtube.com/embed/USaeO7-Z5k0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="video-info">
-                    <div class="video-title">Teknik Tangan Kanan-Kiri Piano</div>
-                    <small class="text-muted">Koordinasi dan iringan lagu</small>
-                    <div class="video-actions">
-                        <button class="action-btn" onclick="toggleFavorite(this)">
-                            <i class="bi bi-heart"></i>
-                        </button>
-                        <button class="action-btn" onclick="addToPlaylist(this)">
-                            <i class="bi bi-plus-circle"></i>
-                        </button>
-                        <button class="action-btn" onclick="togglePracticeMode('piano2')">
-                            <i class="bi bi-toggles"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div id="practice-piano2" class="practice-mode hidden">
-                <h5><i class="bi bi-music-note"></i> Practice Mode</h5>
-                
-                <div class="chord-guide">
-                    <strong>Koordinasi:</strong><br>
-                    <span class="chord-item">Left Hand Bass</span>
-                    <span class="chord-item">Right Hand Melody</span>
-                    <span class="chord-item">Both Hands</span>
-                </div>
-
-                <div class="metronome">
-                    <h6>Metronome</h6>
-                    <div class="bpm-display">65 BPM</div>
-                    <button class="play-metronome">
-                        <i class="bi bi-play-fill"></i> Play
-                    </button>
-                </div>
+            <div class="tutorial-card" onclick="openTutorialList()" 
+                style="background:#8A63D2; border-radius:14px; padding:12px; text-align:center; cursor:pointer; color:white;">
+                <img src="./ikon/image1.png"  style="width:100%; border-radius:10px; margin-bottom:8px;" />
+                <strong>Piano Chords</strong>
             </div>
         </div>
+    </div>
+
+    <!-- TITLE BEFORE YOUTUBE CONTENT -->
+    <h3 style="font-size:18px; margin: 20px 0 10px; color:white;">🎥 Video Tutorial YouTube</h3>
+
+    <!-- VIDEO 1 -->
+    <div class="video-card" style="background:#ffffff; padding:12px; border-radius:14px; margin-bottom:18px; box-shadow:0 2px 5px rgba(0,0,0,0.07); color:black;">
+        <div class="video-thumbnail" style="margin-bottom:10px;">
+            <iframe src="https://www.youtube.com/embed/6djta977xts" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; border-radius:10px;"></iframe>
+        </div>
+        <div class="video-info">
+            <div class="video-title" style="font-size:16px; font-weight:600;">Tentang Piano Hari 1</div>
+            <small class="text-muted">Pengenalan chord dan melodi sederhana</small>
+
+            <div class="video-actions" style="margin-top:8px; display:flex; gap:10px;">
+                <button class="action-btn" onclick="toggleFavorite(this)"><i class="bi bi-heart"></i></button>
+                <button class="action-btn" onclick="addToPlaylist(this)"><i class="bi bi-plus-circle"></i></button>
+                <button class="action-btn" onclick="togglePracticeMode('piano1')"><i class="bi bi-toggles"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRACTICE MODE 1 -->
+    <div id="practice-piano1" class="practice-mode hidden" style="background:#e9ddff; padding:12px; border-radius:14px; margin-bottom:18px; color:black;">
+        <h5><i class="bi bi-music-note"></i> Practice Mode</h5>
+        <div class="chord-guide" style="margin-bottom:10px;">
+            <strong>Piano Chords:</strong><br>
+            <span class="chord-item">C Major</span>
+            <span class="chord-item">G Major</span>
+            <span class="chord-item">A Minor</span>
+            <span class="chord-item">F Major</span>
+        </div>
+        <div class="metronome">
+            <h6>Metronome</h6>
+            <div class="bpm-display" id="bpm-display">70 BPM</div>
+            <div class="bpm-controls" style="display:flex; gap:10px; margin-top:6px;">
+                <button class="bpm-btn" onclick="changeBPM(-5)">-</button>
+                <button class="play-metronome" id="play-metronome" onclick="toggleMetronome()"><i class="bi bi-play-fill"></i> Play</button>
+                <button class="bpm-btn" onclick="changeBPM(5)">+</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIDEO 2 -->
+    <div class="video-card" style="background:white; padding:12px; border-radius:14px; margin-bottom:18px; box-shadow:0 2px 5px rgba(0,0,0,0.07); color:black;">
+        <div class="video-thumbnail" style="margin-bottom:10px;">
+            <iframe src="https://www.youtube.com/embed/USaeO7-Z5k0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; border-radius:10px;"></iframe>
+        </div>
+        <div class="video-info">
+            <div class="video-title" style="font-size:16px; font-weight:600;">Tentang Piano Hari 2</div>
+            <small class="text-muted">Koordinasi dan iringan lagu</small>
+
+            <div class="video-actions" style="margin-top:8px; display:flex; gap:10px;">
+                <button class="action-btn" onclick="toggleFavorite(this)"><i class="bi bi-heart"></i></button>
+                <button class="action-btn" onclick="addToPlaylist(this)"><i class="bi bi-plus-circle"></i></button>
+                <button class="action-btn" onclick="togglePracticeMode('piano2')"><i class="bi bi-toggles"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRACTICE MODE 2 -->
+    <div id="practice-piano2" class="practice-mode hidden" style="background:#e9ddff; padding:12px; border-radius:14px; margin-bottom:18px; color:black;">
+        <h5><i class="bi bi-music-note"></i> Practice Mode</h5>
+        <div class="chord-guide" style="margin-bottom:10px;">
+            <strong>Koordinasi:</strong><br>
+            <span class="chord-item">Left Hand Bass</span>
+            <span class="chord-item">Right Hand Melody</span>
+            <span class="chord-item">Both Hands</span>
+        </div>
+        <div class="metronome">
+            <h6>Metronome</h6>
+            <div class="bpm-display">65 BPM</div>
+            <button class="play-metronome"><i class="bi bi-play-fill"></i> Play</button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+function openTutorialList() {
+    alert('Ini menuju halaman list tutorial gambar.');
+}
+</script>
 
        <!-- Riwayat -->
 <div id="history-page" class="hidden">
@@ -1175,5 +1219,12 @@
         // Auto-save when metronome is used
         document.getElementById('play-metronome')?.addEventListener('click', savePracticeSession);
     </script>
+    <script>
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register("sw.js")
+    .then(() => console.log("SW Registered"));
+}
+
+</script>
 </body>
 </html>
