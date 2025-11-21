@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#1a0033">
     <meta name="description" content="TuneMaster - Platform belajar musik modern untuk gitar dan piano">
-    <title>TuneMaster - Belajar Musik</title>
+    <title>TuneMaster </title>
     
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
@@ -314,7 +314,7 @@
         
         .notification-time {
             font-size: 0.85rem;
-            color: #a78bfa;
+            color: #825fec;
             margin-top: 5px;
         }
         
@@ -407,8 +407,7 @@
                 <div class="logo">
                     <i class="bi bi-music-note-beamed"></i> TuneMaster
                 </div>
-                <div>
-                    <i class="bi bi-bell" style="font-size: 1.3rem; cursor: pointer;"></i>
+               
                 </div>
             </div>
         </div>
@@ -491,15 +490,14 @@
 
         <div class="tutorial-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap:14px;">
 
-            <div class="tutorial-card" onclick="openTutorialList()" 
+    <div  
      style="background:#8A63D2; border-radius:14px; padding:12px; text-align:center; cursor:pointer; color:white;">
-
-    <img src="./ikon/chord-g.png" 
+    <img src="./ikon/chord-g.png" onclick="showImg(this.src)"
     style="width:100%; border-radius:10px; margin-bottom:8px;" />
             <strong>Chord Dasar</strong>
 </div>
 
-            <div class="tutorial-card" onclick="openTutorialList()" style="background:#8A63D2; border-radius:14px; padding:12px; text-align:center; cursor:pointer; color:white;">
+            <div style="background:#8A63D2; border-radius:14px; padding:12px; text-align:center; cursor:pointer; color:white;">
                 <img src="./ikon/image.png"  style="width:100%; border-radius:10px; margin-bottom:8px;" />
                 <strong>Melodic Chords</strong>
             </div>
@@ -507,10 +505,10 @@
     </div>
 
     <!-- TITLE BEFORE YOUTUBE CONTENT -->
-    <h3 style="font-size:18px; margin: 20px 0 10px; color:white;">🎥 Video Tutorial YouTube</h3>
+    <h3 style="font-size:18px; margin: 20px 0 10px; color:#ffffff(35, 31, 31);">🎥 Video Tutorial YouTube</h3>
 
     <!-- VIDEO 1 -->
-    <div class="video-card" style="background:#ffffff; padding:12px; border-radius:14px; margin-bottom:18px; box-shadow:0 2px 5px rgba(0,0,0,0.07); color:black;">
+    <div class="video-card" style="background:#8A63D2; padding:12px; border-radius:14px; margin-bottom:18px; box-shadow:0 2px 5px rgba(0,0,0,0.07); color:black;">
         <div class="video-thumbnail" style="margin-bottom:10px;">
             <iframe src="https://www.youtube.com/embed/ALkZgF9mYOk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; border-radius:10px;"></iframe>
         </div>
@@ -548,7 +546,7 @@
     </div>
 
     <!-- VIDEO 2 -->
-    <div class="video-card" style="background:white; padding:12px; border-radius:14px; margin-bottom:18px; box-shadow:0 2px 5px rgba(0,0,0,0.07); color:black;">
+    <div class="video-card" style="background:#8A63D2; padding:12px; border-radius:14px; margin-bottom:18px; box-shadow:0 2px 5px rgba(0,0,0,0.07); color:black;">
         <div class="video-thumbnail" style="margin-bottom:10px;">
             <iframe src="https://www.youtube.com/embed/nxIB6Ee54f4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; border-radius:10px;"></iframe>
         </div>
@@ -601,15 +599,14 @@ function openTutorialList() {
 
         <div class="tutorial-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap:14px;">
 
-            <div class="tutorial-card" onclick="openTutorialList()" 
-                style="background:#8A63D2; border-radius:14px; padding:12px; text-align:center; cursor:pointer; color:white;">
+            <div style="background:#8A63D2; border-radius:14px; padding:12px; text-align:center; cursor:pointer; color:white;">
                 <img src="./ikon/image copy.png" 
                 style="width:100%; border-radius:10px; margin-bottom:8px;" />
                 <strong>Piano Chords</strong>
             </div>
 
-            <div class="tutorial-card" onclick="openTutorialList()" 
-                style="background:#8A63D2; border-radius:14px; padding:12px; text-align:center; cursor:pointer; color:white;">
+            <div  
+style="background:#8A63D2; border-radius:14px; padding:12px; text-align:center; cursor:pointer; color:white;">
                 <img src="./ikon/image1.png"  style="width:100%; border-radius:10px; margin-bottom:8px;" />
                 <strong>Piano Chords</strong>
             </div>
@@ -620,7 +617,7 @@ function openTutorialList() {
     <h3 style="font-size:18px; margin: 20px 0 10px; color:white;">🎥 Video Tutorial YouTube</h3>
 
     <!-- VIDEO 1 -->
-    <div class="video-card" style="background:#ffffff; padding:12px; border-radius:14px; margin-bottom:18px; box-shadow:0 2px 5px rgba(0,0,0,0.07); color:black;">
+    <div class="video-card" style="background:#8A63D2; padding:12px; border-radius:14px; margin-bottom:18px; box-shadow:0 2px 5px rgba(0,0,0,0.07); color:black;">
         <div class="video-thumbnail" style="margin-bottom:10px;">
             <iframe src="https://www.youtube.com/embed/6djta977xts" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; border-radius:10px;"></iframe>
         </div>
@@ -658,7 +655,7 @@ function openTutorialList() {
     </div>
 
     <!-- VIDEO 2 -->
-    <div class="video-card" style="background:white; padding:12px; border-radius:14px; margin-bottom:18px; box-shadow:0 2px 5px rgba(0,0,0,0.07); color:black;">
+    <div class="video-card" style="background:8A63D2; padding:12px; border-radius:14px; margin-bottom:18px; box-shadow:0 2px 5px rgba(0,0,0,0.07); color:black;">
         <div class="video-thumbnail" style="margin-bottom:10px;">
             <iframe src="https://www.youtube.com/embed/USaeO7-Z5k0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; border-radius:10px;"></iframe>
         </div>
@@ -692,10 +689,6 @@ function openTutorialList() {
 
 </div>
 
-<script>
-function openTutorialList() {
-    alert('Ini menuju halaman list tutorial gambar.');
-}
 </script>
 
        <!-- Riwayat -->
@@ -801,8 +794,90 @@ function openTutorialList() {
             
             <div id="search-results" class="mt-4">
                 <p class="text-muted text-center">Masukkan kata kunci untuk mencari tutorial</p>
+                 </div>
+    <script>
+document.getElementById("search-input").addEventListener("input", function () {
+    let keyword = this.value.toLowerCase().trim();
+    let resultBox = document.getElementById("search-results");
+
+    if (keyword === "") {
+        resultBox.innerHTML = `<p class="text-muted text-center">Masukkan kata kunci untuk mencari tutorial</p>`;
+        return;
+    }
+
+    // --- GITAR ---
+    if (keyword.includes("gitar")) {
+        resultBox.innerHTML = `
+            <h3>Gitar</h3>
+            <img src="./ikon/chord-g.png" style="max-width:100px; border-radius:8px;">
+            <br><br>
+            <a href="https://www.youtube.com/watch?v=ALkZgF9mYOk" target="_blank" class="btn btn-primary">
+                Buka Tutorial Gitar
+            </a>
+        `;
+        return;
+    }
+
+    // --- PIANO ---
+    if (keyword.includes("piano")) {
+        resultBox.innerHTML = `
+            <h3>Piano</h3>
+            <img src="./ikon/image copy.png" style="max-width:100px; border-radius:8px;">
+            <br><br>
+            <a href="https://www.youtube.com/watch?v=USaeO7-Z5k0" target="_blank" class="btn btn-primary">
+                Buka Piano
+            </a>
+        `;
+        return;
+    }
+
+    // Jika tidak ditemukan
+    resultBox.innerHTML = `<p class="text-danger text-center">Tidak ada hasil untuk "<b>${keyword}</b>"</p>`;
+});
+</script>
+        </div>
+       <!-- Konten Saya -->
+<div id="konten-page" class="hidden">
+  <h2 class="mb-3"> </h2>
+  <div class="content-box text-center">
+    <!-- Atur ukuran foto di sini -->
+    <img src="ikon/fotoku.jpg" alt="Foto Saya" class="foto-saya">
+    <!-- Atur ukuran tulisan di sini -->
+    <p class="konten-text">Nama: Dhia Suhaimah</p>
+    <p class="konten-text">Semester: 5</p>
+    <p class="konten-text">Jurusan: Bisnis Digital</p>
+  </div>
+</div>
+
+<style>
+  /* Ukuran foto */
+  .foto-saya {
+      width: 150px;      /* lebar foto */
+      height: 150px;     /* tinggi foto */
+      border-radius: 50%; /* bikin bulat */
+      margin-bottom: 15px;
+      object-fit: cover;   /* menjaga proporsi foto */
+  }
+
+  /* Ukuran tulisan */
+  .konten-text {
+      font-size: 20px;  /* ukuran font */
+      margin: 5px 0;
+  }
+
+  /* Jika ingin judul lebih besar */
+  #konten-page h2 {
+      font-size: 26px;
+      margin-bottom: 20px; }</style> <div> </div>
+</div>
+ </div>
+                </div>
             </div>
         </div>
+
+</div>
+</div>
+
         
     </div>
 
@@ -825,6 +900,10 @@ function openTutorialList() {
                 <div class="col nav-item" onclick="showPage('search')">
                     <i class="bi bi-search"></i>
                     <span>Cari</span>
+                </div>
+                <div class="col nav-item" onclick="showPage('konten')">
+                <i class="bi bi-file-earmark-text"></i>
+                <span>Konten Saya</span>
                 </div>
             </div>
         </div>
